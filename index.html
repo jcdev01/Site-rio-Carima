@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projeto rio carimã</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --verde-escuro: #1a4a2e;
+      --verde-medio: #2d7a4f;
+      --verde-claro: #5aad7a;
+      --bege: #f5f0e8;
+      --bege-escuro: #e8dfc8;
+      --marrom: #7a5c3a;
+      --texto: #1e1e1e;
+      --branco: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--bege);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: var(--verde-escuro);
+      color: var(--branco);
+      padding: 60px 40px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(90,173,122,0.15);
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 10%;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(90,173,122,0.1);
+    }
+
+    .escola {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 16px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 span { color: var(--verde-claro); }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--verde-claro);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 28px 80px;
+    }
+
+    .intro {
+      background: var(--branco);
+      border-left: 5px solid var(--verde-medio);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin-bottom: 52px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    section { margin-bottom: 52px; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 32px;
+      background: var(--verde-claro);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    p {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: #3a3a3a;
+      margin-bottom: 14px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--branco);
+      border-radius: 12px;
+      padding: 20px 18px;
+      border-top: 4px solid var(--verde-claro);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .card .icon { font-size: 1.8rem; margin-bottom: 10px; }
+
+    .card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .card p { font-size: 0.85rem; color: #555; margin: 0; line-height: 1.6; }
+
+    .placas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .placa {
+      border-radius: 10px;
+      padding: 18px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .placa.orientar  { background: #e8f5ee; color: #1a5c35; border: 2px solid #5aad7a; }
+    .placa.educar    { background: #e8f0fb; color: #1a3a7a; border: 2px solid #5a7acd; }
+    .placa.conscient { background: #fdf6e3; color: #7a5a10; border: 2px solid #d4a832; }
+    .placa.perigo    { background: #fdecea; color: #7a1a1a; border: 2px solid #e05050; }
+
+    .placa .placa-icon  { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+    .placa .placa-label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; display: block; }
+
+    .materiais {
+      background: var(--bege-escuro);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .material-tag {
+      background: var(--branco);
+      border: 1.5px solid var(--marrom);
+      color: var(--marrom);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .rota {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .rota-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 100px;
+      position: relative;
+    }
+
+    .rota-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -10px;
+      top: 14px;
+      color: var(--verde-claro);
+      font-size: 1.2rem;
+    }
+
+    .rota-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--verde-medio);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .rota-txt {
+      font-size: 0.78rem;
+      text-align: center;
+      color: #444;
+      line-height: 1.4;
+      padding: 0 4px;
+    }
+
+    .divulgacao-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .div-item {
+      background: var(--verde-escuro);
+      color: var(--branco);
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 0.88rem;
+    }
+
+    .div-item .di { font-size: 1.4rem; margin-bottom: 6px; }
+
+    .panfleto-list {
+      list-style: none;
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .panfleto-list li {
+      background: var(--branco);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panfleto-list li::before {
+      content: '✓';
+      color: var(--verde-claro);
+      font-weight: 700;
+    }
+
+    /* ── VÍDEO ── */
+    .video_div {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 40px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .video_div video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--verde-escuro);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    footer strong { color: var(--verde-claro); }
+
+    /* ── RESPONSIVO TABLET ── */
+    @media (max-width: 768px) {
+      header { padding: 40px 24px 36px; }
+      main { padding: 40px 18px 60px; }
+
+      .intro {
+        padding: 20px;
+        font-size: 0.95rem;
+        margin-bottom: 36px;
+      }
+
+      .meta { gap: 12px; }
+      .meta-item { font-size: 0.76rem; padding: 8px 14px; }
+
+      .card-grid { grid-template-columns: 1fr 1fr; }
+      .placas-grid { grid-template-columns: 1fr 1fr; }
+      .divulgacao-list { grid-template-columns: 1fr 1fr; }
+
+      .rota-step:not(:last-child)::after { display: none; }
+      .materiais { padding: 18px; }
+      .panfleto-list { grid-template-columns: 1fr; }
+    }
+
+    /* ── RESPONSIVO CELULAR ── */
+    @media (max-width: 480px) {
+      header { padding: 28px 16px; }
+
+      .escola {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+      }
+
+      .meta { flex-direction: column; gap: 10px; }
+
+      .card-grid { grid-template-columns: 1fr; }
+      .placas-grid { grid-template-columns: 1fr; }
+      .divulgacao-list { grid-template-columns: 1fr; }
+
+      .rota {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .rota-step {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-width: unset;
+      }
+
+      .rota-num { margin-bottom: 0; flex-shrink: 0; }
+      .rota-txt { text-align: left; }
+
+      .materiais { padding: 14px; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="escola">Colégio de São José &nbsp;·&nbsp; 3º E.M. &nbsp;·&nbsp; 18/03/2026</p>
+  <h1>Projeto de Sinalização <span>Sustentável</span> para o Rio carimã</h1>
+  <div class="meta">
+    <div class="meta-item"><strong>Alunos</strong>Maria Luísa Braz, Maria Luiza Bandeira, Karen Wesleya, Guilherme Albuquerque, Mariah Lorena e Lara Buarque</div>
+    <div class="meta-item"><strong>Turma</strong>3º E.M.</div>
+    <div class="meta-item"><strong>Data</strong>18 de março de 2026</div>
+  </div>
+</header>
+
+<main>
+
+  <div class="intro">
+    Este projeto tem como objetivo principal planejar a implementação de um sistema de sinalização sustentável para orientar, organizar e conscientizar a população sobre o acesso e a preservação do rio da cidade. Nesta primeira etapa, será apresentado apenas o planejamento do que será realizado futuramente, destacando a importância da sinalização tanto para o meio ambiente quanto para a segurança das pessoas.
+  </div>
+
+  <section>
+    <h2>O Problema</h2>
+    <p>Um dos pontos mais importantes do projeto é garantir que as pessoas saibam como chegar ao rio de forma correta e segura. Muitas vezes, a falta de orientação faz com que visitantes utilizem caminhos inadequados, pisem em áreas de vegetação sensível ou até se percam. Isso pode causar impactos ambientais, como destruição da natureza local, além de riscos à segurança.</p>
+  </section>
+
+  <section>
+    <h2>Rota Planejada até o Rio</h2>
+    <p>O projeto propõe a criação de uma rota planejada, definida com base em caminhos já existentes, evitando desmatamento ou alteração do ambiente natural. A rota será acessível, segura e fácil de seguir.</p>
+    <div class="rota">
+      <div class="rota-step"><div class="rota-num">1</div><div class="rota-txt">Ponto de partida (rua principal)</div></div>
+      <div class="rota-step"><div class="rota-num">2</div><div class="rota-txt">Pontos de referência da cidade</div></div>
+      <div class="rota-step"><div class="rota-num">3</div><div class="rota-txt">Placas de direção e distância</div></div>
+      <div class="rota-step"><div class="rota-num">4</div><div class="rota-txt">Chegada ao rio</div></div>
+    </div>
+    <div class="card-grid" style="margin-top:24px;">
+      <div class="card"><div class="icon">🧭</div><h3>Direção</h3><p>Setas indicando o caminho correto ao longo do percurso.</p></div>
+      <div class="card"><div class="icon">📏</div><h3>Distância</h3><p>Informação sobre a distância restante até o rio.</p></div>
+      <div class="card"><div class="icon">⏱️</div><h3>Tempo</h3><p>Tempo médio estimado de percurso a pé.</p></div>
+      <div class="card"><div class="icon">⚠️</div><h3>Atenção</h3><p>Pontos de atenção ao longo do caminho.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sinalização no Local do Rio</h2>
+    <p>No próprio ambiente do rio, serão colocadas placas informativas e educativas com diferentes funções — orientar, conscientizar e alertar.</p>
+    <div class="placas-grid">
+      <div class="placa orientar"><span class="placa-icon">📍</span><span class="placa-label">Localização</span>Indicando que o visitante chegou ao rio</div>
+      <div class="placa educar"><span class="placa-icon">📚</span><span class="placa-label">Educativas</span>Importância da preservação da água, fauna e flora</div>
+      <div class="placa conscient"><span class="placa-icon">♻️</span><span class="placa-label">Conscientização</span>"Não jogue lixo", "preserve este espaço", "leve seu lixo de volta"</div>
+      <div class="placa perigo"><span class="placa-icon">🚨</span><span class="placa-label">Perigo</span>Áreas escorregadias, profundidade, correnteza e riscos de acidentes</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Materiais Sustentáveis</h2>
+    <p>A proposta é que as placas sejam feitas com materiais reutilizados ou recicláveis. Também será sugerido o uso de tintas ecológicas, que causam menos impacto ao meio ambiente.</p>
+    <div class="materiais">
+      <span class="material-tag">🪵 Madeira reaproveitada</span>
+      <span class="material-tag">🧱 Restos de construção</span>
+      <span class="material-tag">🍶 Garrafas plásticas</span>
+      <span class="material-tag">🪧 Placas antigas reformadas</span>
+      <span class="material-tag">🎨 Tintas ecológicas</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Panfleto Informativo</h2>
+    <p>Na etapa final, o grupo ficará responsável pela criação de um panfleto de divulgação que explique de forma clara e atrativa tudo o que foi planejado.</p>
+    <ul class="panfleto-list">
+      <li>Objetivo do projeto</li>
+      <li>Importância da sinalização</li>
+      <li>Benefícios para o meio ambiente</li>
+      <li>Benefícios para a população</li>
+      <li>Exemplos das placas utilizadas</li>
+      <li>Como participar</li>
+    </ul>
+  </section>
+
+  <div class="video_div">
+    <video controls src="assets/video.mp4"></video>
+  </div>
+
+  <section>
+    <h2>Divulgação nas Redes Sociais</h2>
+    <p>Para ampliar o alcance do projeto, será proposta a utilização das redes sociais como ferramenta de conscientização, atingindo principalmente os jovens.</p>
+    <div class="divulgacao-list">
+      <div class="div-item"><div class="di">🌿</div><a href="https://mundoeducacao.uol.com.br/biologia/10-dicas-importantes-para-preservar-meio-ambiente.htm" target="_blank">Dicas de preservação ambiental</a></div>
+      <div class="div-item"><div class="di">🏞️</div><a href="https://www.revistaea.org/artigo.php?idartigo=560" target="_blank">Informações sobre o rio</a></div>
+      <div class="div-item"><div class="di">🚯</div><a href="https://www.google.com/search?q=alertas+sobre+poluição+de+rios" target="_blank">Alertas sobre poluição</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Colégio de São José</strong> &nbsp;·&nbsp; Projeto rio carimã &nbsp;·&nbsp; 3º E.M. &nbsp;·&nbsp; 2026
+</footer>
+
+</body>
+</html>
