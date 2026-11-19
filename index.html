@@ -1,494 +1,480 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projeto rio carimã</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --verde-escuro: #1a4a2e;
-      --verde-medio: #2d7a4f;
-      --verde-claro: #5aad7a;
-      --bege: #f5f0e8;
-      --bege-escuro: #e8dfc8;
-      --marrom: #7a5c3a;
-      --texto: #1e1e1e;
-      --branco: #ffffff;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d2e22">
+  <meta name="description" content="Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do Rio Carimã — projeto de educação ambiental do Colégio de São José, em Barreiros — Pernambuco.">
+  <meta property="og:title" content="Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do Rio Carimã">
+  <meta property="og:description" content="Diagnóstico, soluções e registros de campo do projeto de mapeamento e reflorestamento da nascente do Rio Carimã.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://site-rio-carima.vercel.app/">
+  <meta property="og:image" content="https://site-rio-carima.vercel.app/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Projeto Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do Rio Carimã">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do Rio Carimã">
+  <meta name="twitter:description" content="Diagnóstico, soluções e registros de campo do projeto de mapeamento e reflorestamento da nascente do Rio Carimã.">
+  <meta name="twitter:image" content="https://site-rio-carima.vercel.app/assets/img/og-image.jpg">
+  <link rel="canonical" href="https://site-rio-carima.vercel.app/">
+  <title>Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do Rio Carimã</title>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/img/hero-rio.webp">
 
-    body {
-      font-family: 'Lato', sans-serif;
-      background-color: var(--bege);
-      color: var(--texto);
-      overflow-x: hidden;
-    }
-
-    header {
-      background-color: var(--verde-escuro);
-      color: var(--branco);
-      padding: 60px 40px 50px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 320px; height: 320px;
-      border-radius: 50%;
-      background: rgba(90,173,122,0.15);
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -40px; left: 10%;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: rgba(90,173,122,0.1);
-    }
-
-    .escola {
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--verde-claro);
-      margin-bottom: 16px;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 5vw, 3.4rem);
-      line-height: 1.15;
-      max-width: 700px;
-      position: relative;
-      z-index: 1;
-    }
-
-    header h1 span { color: var(--verde-claro); }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 32px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .meta-item {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.85);
-    }
-
-    .meta-item strong {
-      display: block;
-      color: var(--verde-claro);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-    }
-
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 60px 28px 80px;
-    }
-
-    .intro {
-      background: var(--branco);
-      border-left: 5px solid var(--verde-medio);
-      border-radius: 0 12px 12px 0;
-      padding: 28px 32px;
-      margin-bottom: 52px;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #333;
-    }
-
-    section { margin-bottom: 52px; }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      color: var(--verde-escuro);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    h2::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 32px;
-      background: var(--verde-claro);
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-
-    p {
-      font-size: 0.97rem;
-      line-height: 1.85;
-      color: #3a3a3a;
-      margin-bottom: 14px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background: var(--branco);
-      border-radius: 12px;
-      padding: 20px 18px;
-      border-top: 4px solid var(--verde-claro);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-
-    .card .icon { font-size: 1.8rem; margin-bottom: 10px; }
-
-    .card h3 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--verde-escuro);
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-
-    .card p { font-size: 0.85rem; color: #555; margin: 0; line-height: 1.6; }
-
-    .placas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .placa {
-      border-radius: 10px;
-      padding: 18px 16px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .placa.orientar  { background: #e8f5ee; color: #1a5c35; border: 2px solid #5aad7a; }
-    .placa.educar    { background: #e8f0fb; color: #1a3a7a; border: 2px solid #5a7acd; }
-    .placa.conscient { background: #fdf6e3; color: #7a5a10; border: 2px solid #d4a832; }
-    .placa.perigo    { background: #fdecea; color: #7a1a1a; border: 2px solid #e05050; }
-
-    .placa .placa-icon  { font-size: 1.5rem; margin-bottom: 8px; display: block; }
-    .placa .placa-label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; display: block; }
-
-    .materiais {
-      background: var(--bege-escuro);
-      border-radius: 14px;
-      padding: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .material-tag {
-      background: var(--branco);
-      border: 1.5px solid var(--marrom);
-      color: var(--marrom);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 0.83rem;
-      font-weight: 700;
-    }
-
-    .rota {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .rota-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      min-width: 100px;
-      position: relative;
-    }
-
-    .rota-step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -10px;
-      top: 14px;
-      color: var(--verde-claro);
-      font-size: 1.2rem;
-    }
-
-    .rota-num {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--verde-medio);
-      color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
-
-    .rota-txt {
-      font-size: 0.78rem;
-      text-align: center;
-      color: #444;
-      line-height: 1.4;
-      padding: 0 4px;
-    }
-
-    .divulgacao-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .div-item {
-      background: var(--verde-escuro);
-      color: var(--branco);
-      border-radius: 10px;
-      padding: 16px;
-      font-size: 0.88rem;
-    }
-
-    .div-item .di { font-size: 1.4rem; margin-bottom: 6px; }
-
-    .panfleto-list {
-      list-style: none;
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .panfleto-list li {
-      background: var(--branco);
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-size: 0.88rem;
-      color: #444;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .panfleto-list li::before {
-      content: '✓';
-      color: var(--verde-claro);
-      font-weight: 700;
-    }
-
-    /* ── VÍDEO ── */
-    .video_div {
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto 40px auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    }
-
-    .video_div video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    a:hover { text-decoration: underline; }
-
-    footer {
-      background: var(--verde-escuro);
-      color: rgba(255,255,255,0.6);
-      text-align: center;
-      padding: 28px;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-    }
-
-    footer strong { color: var(--verde-claro); }
-
-    /* ── RESPONSIVO TABLET ── */
-    @media (max-width: 768px) {
-      header { padding: 40px 24px 36px; }
-      main { padding: 40px 18px 60px; }
-
-      .intro {
-        padding: 20px;
-        font-size: 0.95rem;
-        margin-bottom: 36px;
-      }
-
-      .meta { gap: 12px; }
-      .meta-item { font-size: 0.76rem; padding: 8px 14px; }
-
-      .card-grid { grid-template-columns: 1fr 1fr; }
-      .placas-grid { grid-template-columns: 1fr 1fr; }
-      .divulgacao-list { grid-template-columns: 1fr 1fr; }
-
-      .rota-step:not(:last-child)::after { display: none; }
-      .materiais { padding: 18px; }
-      .panfleto-list { grid-template-columns: 1fr; }
-    }
-
-    /* ── RESPONSIVO CELULAR ── */
-    @media (max-width: 480px) {
-      header { padding: 28px 16px; }
-
-      .escola {
-        font-size: 0.65rem;
-        letter-spacing: 1px;
-      }
-
-      .meta { flex-direction: column; gap: 10px; }
-
-      .card-grid { grid-template-columns: 1fr; }
-      .placas-grid { grid-template-columns: 1fr; }
-      .divulgacao-list { grid-template-columns: 1fr; }
-
-      .rota {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .rota-step {
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-        min-width: unset;
-      }
-
-      .rota-num { margin-bottom: 0; flex-shrink: 0; }
-      .rota-txt { text-align: left; }
-
-      .materiais { padding: 14px; gap: 8px; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-<header>
-  <p class="escola">Colégio de São José &nbsp;·&nbsp; 3º E.M. &nbsp;·&nbsp; 18/03/2026</p>
-  <h1>Projeto de Sinalização <span>Sustentável</span> para o Rio carimã</h1>
-  <div class="meta">
-    <div class="meta-item"><strong>Alunos</strong>Maria Luísa Braz, Maria Luiza Bandeira, Karen Wesleya, Guilherme Albuquerque, Mariah Lorena e Lara Buarque</div>
-    <div class="meta-item"><strong>Turma</strong>3º E.M.</div>
-    <div class="meta-item"><strong>Data</strong>18 de março de 2026</div>
+  <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4c-8.5 0-14 3.2-14 9.5A6.5 6.5 0 0 0 12.5 20C19 20 20 13.5 20 4Z"/><path d="M4 21c1.8-5.2 5.3-8.7 10.5-11"/></symbol>
+    <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+    <symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 8c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 14c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 20c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 9v5"/><path d="M12 17.5h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22V4.5Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></symbol>
+    <symbol id="i-recycle" viewBox="0 0 24 24"><path d="m7 19-3-5 3-5"/><path d="m7 9 4-6 4 6"/><path d="m17 5 3 5-3 5"/><path d="M4 14h9l-3 5"/><path d="M20 10h-9l3-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 20V5"/><path d="m6 11 6-6 6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v6H4V6h6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+  </svg>
+
+  <header class="site-header" id="topo">
+    <div class="nav container">
+      <a class="brand" href="#topo" aria-label="Rio Carimã — início">
+        <span class="brand__mark"><svg><use href="#i-leaf" /></svg></span>
+        <span class="brand__text">RIO <strong>CARIMÃ</strong><small>Barreiros · PE</small></span>
+      </a>
+
+      <nav class="nav__links" id="menu" aria-label="Navegação principal">
+        <a href="#projeto">Projeto</a>
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#solucao">Solução</a>
+        <a href="#monitoramento">Monitoramento</a>
+        <a href="#registros">Registros</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--outline btn--sm" href="assets/media/preservacao-rio-carima.pdf" target="_blank" rel="noopener">
+          Relatório <svg><use href="#i-external" /></svg>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+          <svg><use href="#i-menu" /></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <div class="hero__orb" aria-hidden="true">
+        <div class="orb__halo"></div>
+        <div class="orb__scene">
+          <div class="orb__rings">
+            <span class="orb__ring orb__ring--1"></span>
+            <span class="orb__ring orb__ring--2"></span>
+            <span class="orb__ring orb__ring--3"></span>
+          </div>
+          <div class="orb__core"><svg><use href="#i-leaf" /></svg></div>
+          <span class="orb__drop orb__drop--1"></span>
+          <span class="orb__drop orb__drop--2"></span>
+          <span class="orb__drop orb__drop--3"></span>
+          <span class="orb__drop orb__drop--4"></span>
+        </div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow eyebrow--light" data-hero>Colégio de São José <span>·</span> Barreiros — PE</p>
+          <h1 class="hero__title--project" data-hero>Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do <em>Rio Carimã</em></h1>
+          <p class="hero__lead" data-hero>
+            Cuidar da nascente é cuidar de todo o território. Mapeamos e reflorestamos a nascente do
+            Rio Carimã, em Barreiros — da leitura de campo à mobilização da escola e da comunidade.
+          </p>
+          <div class="hero__actions" data-hero>
+            <a class="btn btn--primary" href="#projeto">Conheça o projeto <svg><use href="#i-arrow" /></svg></a>
+            <a class="btn btn--ghost" href="#diagnostico">Ver o diagnóstico</a>
+          </div>
+        </div>
+
+        <div class="hero__stats" data-hero>
+          <div class="stat"><strong data-count="30">0</strong><span><small>km</small> de trajeto até o Rio Una</span></div>
+          <div class="stat"><strong data-count="4">0</strong><span>impactos mapeados</span></div>
+          <div class="stat"><strong data-count="4">0</strong><span>espécies nativas</span></div>
+          <div class="stat"><strong>3º <small>E.M.</small></strong><span>turma de 2026</span></div>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#projeto" aria-label="Rolar para o próximo conteúdo">
+        <span>Explore</span><i></i>
+      </a>
+    </section>
+
+    <section class="section section--paper" id="projeto">
+      <div class="container about">
+        <div class="about__copy">
+          <p class="eyebrow" data-reveal>01 <span>/</span> O projeto</p>
+          <h2 class="section__title" data-reveal>Da sala de aula à nascente: ciência, cuidado e pertencimento.</h2>
+          <h3 class="about__subtitle" data-reveal>Objetivo e área de estudo</h3>
+          <p class="about__objective" data-reveal>
+            Mapear a nascente do Rio Carimã e mobilizar o reflorestamento como estratégia de
+            preservação ambiental, social e econômica.
+          </p>
+          <p data-reveal>
+            A área de estudo vai do centro de Barreiros até a Fazenda / Engenho Pracinha. O trajeto entre a
+            nascente e o ponto de deságue no Rio Una é estimado em <strong>≈ 30 km</strong>, registrado a partir
+            de leitura de campo e visualização por imagem orbital.
+          </p>
+
+          <div class="about__facts" data-stagger>
+            <div class="fact"><svg><use href="#i-pin" /></svg><div><strong>Barreiros — PE</strong><span>Território de atuação</span></div></div>
+            <div class="fact"><svg><use href="#i-layers" /></svg><div><strong>Bacia do Rio Una</strong><span>Manancial de abastecimento</span></div></div>
+            <div class="fact"><svg><use href="#i-leaf" /></svg><div><strong>Reflorestamento</strong><span>Estratégia de preservação</span></div></div>
+          </div>
+        </div>
+
+        <div class="about__visual" data-reveal>
+          <figure class="photo photo--tall"><img src="assets/img/vegetacao.webp" alt="Vegetação preservada às margens do Rio Carimã" loading="lazy"></figure>
+          <figure class="photo photo--small"><img src="assets/img/campo-01.webp" alt="Registro de campo da equipe estudantil" loading="lazy"></figure>
+          <div class="floating-card">
+            <span>Nascente</span>
+            <div class="floating-card__line"><i></i><i></i><i></i></div>
+            <span>Rio Una</span>
+            <strong>≈ 30 km</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="diagnostico">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow eyebrow--light" data-reveal>02 <span>/</span> O problema</p>
+            <h2 class="section__title section__title--light" data-reveal>Falta de preservação e mapeamento na nascente do Rio Carimã.</h2>
+          </div>
+          <p class="section__intro" data-reveal>
+            A falta de preservação da nascente do Rio Carimã e a ausência de mapeamento do percurso
+            do rio levaram à busca por soluções com impactos ambientais positivos, por meio do
+            reflorestamento das áreas afetadas.
+          </p>
+        </div>
+
+        <p class="diagnostico__lead" data-reveal>A partir desse diagnóstico, quatro pressões aparecem de forma recorrente e se reforçam:</p>
+
+        <div class="impact-grid" data-stagger>
+          <article class="impact-card">
+            <span class="impact-card__icon"><svg><use href="#i-leaf" /></svg></span>
+            <span class="impact-card__num">01</span>
+            <h3>Mata ciliar</h3>
+            <p>Perda da proteção do solo e da filtragem natural das águas.</p>
+          </article>
+          <article class="impact-card">
+            <span class="impact-card__icon"><svg><use href="#i-layers" /></svg></span>
+            <span class="impact-card__num">02</span>
+            <h3>Erosão e assoreamento</h3>
+            <p>Margens expostas perdem solo; o sedimento ocupa o leito do rio.</p>
+          </article>
+          <article class="impact-card">
+            <span class="impact-card__icon"><svg><use href="#i-droplet" /></svg></span>
+            <span class="impact-card__num">03</span>
+            <h3>Poluição</h3>
+            <p>Lixo, esgoto e fertilizantes pressionam a qualidade da água.</p>
+          </article>
+          <article class="impact-card">
+            <span class="impact-card__icon"><svg><use href="#i-waves" /></svg></span>
+            <span class="impact-card__num">04</span>
+            <h3>Cheias</h3>
+            <p>A vulnerabilidade ribeirinha cresce quando a bacia perde proteção.</p>
+          </article>
+        </div>
+
+        <div class="note">
+          <svg><use href="#i-warning" /></svg>
+          <p><strong>Nota metodológica:</strong> estimativas locais, dados históricos e bases oficiais têm escalas
+            distintas. Distinguir essas fontes e validar medições faz parte do trabalho.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="trajeto">
+      <div class="container">
+        <div class="section__head section__head--split">
+          <div>
+            <p class="eyebrow" data-reveal>03 <span>/</span> Área de estudo</p>
+            <h2 class="section__title" data-reveal>Da nascente ao Rio Una.</h2>
+          </div>
+          <a class="text-link" data-reveal href="https://earth.google.com/earth/d/1Duwg5_9ckvEpJTSR4qpFQw50TKq8UZIL?usp=sharing" target="_blank" rel="noopener">
+            Explorar no Google Earth <svg><use href="#i-external" /></svg>
+          </a>
+        </div>
+
+        <figure class="wide-photo" data-reveal>
+          <img src="assets/img/trajeto.webp" alt="Trajetório estimado entre a nascente do Rio Carimã e o deságue no Rio Una" loading="lazy">
+          <figcaption>Registro de campo combinado à leitura de imagem orbital · trajeto estimado de ≈ 30 km</figcaption>
+        </figure>
+
+        <div class="journey" data-reveal>
+          <div class="journey__progress"><span></span></div>
+          <div class="journey__steps" data-stagger>
+            <div class="journey__step"><span>01</span><strong>Centro de Barreiros</strong><p>Ponto de partida e referência urbana.</p></div>
+            <div class="journey__step"><span>02</span><strong>Engenho Pracinha</strong><p>Fazenda no percurso focal deste estudo.</p></div>
+            <div class="journey__step"><span>03</span><strong>Nascente do Carimã</strong><p>Área sensível que precisa de proteção.</p></div>
+            <div class="journey__step"><span>04</span><strong>Deságue no Rio Una</strong><p>Conexão com a bacia hidrográfica maior.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cream" id="solucao">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" data-reveal>04 <span>/</span> A solução</p>
+            <h2 class="section__title" data-reveal>Reflorestar é restaurar funções do ecossistema.</h2>
+          </div>
+          <p class="section__intro" data-reveal>
+            Não se trata apenas de plantar mudas: a proposta reconstrói a mata ciliar, protege o solo,
+            acompanha a água e transforma o cuidado em aprendizado compartilhado.
+          </p>
+        </div>
+
+        <div class="solution__layout">
+          <div class="solution__steps" data-stagger>
+            <article class="step-card"><span>01</span><div><h3>Espécies nativas adequadas</h3><p>Seleção alinhada à região e à função ecológica de cada espécie.</p></div></article>
+            <article class="step-card"><span>02</span><div><h3>Proteção e manutenção</h3><p>Cuidado contínuo das mudas para garantir sobrevivência e crescimento.</p></div></article>
+            <article class="step-card"><span>03</span><div><h3>Mata ciliar recomposta</h3><p>Vegetação restaurada para conter a erosão das margens.</p></div></article>
+            <article class="step-card"><span>04</span><div><h3>Acompanhamento da água</h3><p>Observação periódica da qualidade e do fluxo do curso d'água.</p></div></article>
+          </div>
+
+          <div class="solution__media" data-reveal>
+            <figure class="photo photo--tall"><img src="assets/img/plantio-01.webp" alt="Estudantes realizando o plantio de mudas em prática educativa" loading="lazy"></figure>
+            <span class="media-badge"><svg><use href="#i-check" /></svg> Plantio em prática educativa</span>
+          </div>
+        </div>
+
+        <div class="species">
+          <div class="species__head" data-reveal>
+            <p class="eyebrow">Espécies do projeto</p>
+            <p>Quatro nativas que simbolizam a recuperação da mata ciliar e da biodiversidade local.</p>
+          </div>
+          <div class="species__grid" data-stagger>
+            <article class="species-card"><h3>Camaçari</h3><em>Caraipa densifolia</em><p>Árvore nativa que deu origem ao nome do município de Camaçari, na Bahia.</p></article>
+            <article class="species-card"><h3>Cupiúba</h3><em>Goupia glabra</em><p>Também chamada de copiúba ou vinagreira, é uma árvore de grande porte.</p></article>
+            <article class="species-card"><h3>Pau-Brasil</h3><em>Paubrasilia echinata</em><p>Espécie endêmica da Mata Atlântica e nativa do litoral brasileiro.</p></article>
+            <article class="species-card"><h3>Copaíba</h3><em>Copaifera langsdorffii</em><p>Pau-óleo de grande importância ecológica e econômica.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="monitoramento">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow eyebrow--light" data-reveal>05 <span>/</span> Monitoramento</p>
+            <h2 class="section__title section__title--light" data-reveal>Medir para aprender, corrigir e avançar.</h2>
+          </div>
+          <p class="section__intro" data-reveal>
+            Quatro indicadores acompanham a evolução da área restaurada e o envolvimento de quem vive no território.
+          </p>
+        </div>
+
+        <div class="monitor-grid" data-stagger>
+          <article class="monitor-card"><span class="monitor-card__icon"><svg><use href="#i-leaf" /></svg></span><h3>Mudas</h3><p>Sobrevivência e crescimento.</p><span class="monitor-card__idx">01</span></article>
+          <article class="monitor-card"><span class="monitor-card__icon"><svg><use href="#i-layers" /></svg></span><h3>Solo</h3><p>Erosão e assoreamento.</p><span class="monitor-card__idx">02</span></article>
+          <article class="monitor-card"><span class="monitor-card__icon"><svg><use href="#i-droplet" /></svg></span><h3>Água</h3><p>Qualidade em pontos estratégicos.</p><span class="monitor-card__idx">03</span></article>
+          <article class="monitor-card"><span class="monitor-card__icon"><svg><use href="#i-leaf" /></svg></span><h3>Pessoas</h3><p>Participação contínua de escolas e comunidade.</p><span class="monitor-card__idx">04</span></article>
+        </div>
+
+        <div class="process" data-reveal>
+          <div><span>01</span><strong>Linha de base</strong></div>
+          <svg><use href="#i-arrow" /></svg>
+          <div><span>02</span><strong>Acompanhamento periódico</strong></div>
+          <svg><use href="#i-arrow" /></svg>
+          <div><span>03</span><strong>Revisão das ações</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="impacto">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" data-reveal>06 <span>/</span> Por que importa</p>
+            <h2 class="section__title" data-reveal>Um rio saudável sustenta vidas e economias.</h2>
+          </div>
+          <p class="section__intro" data-reveal>
+            Preservar o Rio Carimã protege o abastecimento, a produção rural e os serviços ambientais
+            dos quais a comunidade depende.
+          </p>
+        </div>
+
+        <div class="benefit-grid" data-stagger>
+          <article class="benefit-card benefit-card--wide">
+            <span class="benefit-card__icon"><svg><use href="#i-droplet" /></svg></span>
+            <div><h3>Água que chega à comunidade</h3><p>Após tratamento, o rio contribui para o fornecimento de água potável, sustentando saúde, bem-estar e segurança hídrica.</p></div>
+          </article>
+          <article class="benefit-card"><span class="benefit-card__icon"><svg><use href="#i-leaf" /></svg></span><div><h3>Produção rural</h3><p>Água para agricultura, irrigação e atividades do campo.</p></div></article>
+          <article class="benefit-card"><span class="benefit-card__icon"><svg><use href="#i-check" /></svg></span><div><h3>Custos evitados</h3><p>Menor exposição à escassez hídrica, erosão e enchentes.</p></div></article>
+          <article class="benefit-card"><span class="benefit-card__icon"><svg><use href="#i-layers" /></svg></span><div><h3>Serviços ambientais</h3><p>Solo protegido, regulação da água e biodiversidade funcional.</p></div></article>
+          <article class="benefit-card"><span class="benefit-card__icon"><svg><use href="#i-pin" /></svg></span><div><h3>Novas oportunidades</h3><p>Turismo de natureza e educação ambiental no território.</p></div></article>
+        </div>
+
+        <figure class="feature-photo" data-reveal>
+          <img src="assets/img/campo-03.webp" alt="Estudantes em atividade de educação ambiental na Bica do Bira, afluente do Rio Carimã" loading="lazy">
+          <figcaption><strong>Estudantes na Bica do Bira</strong>, afluente do Rio Carimã — educação ambiental na prática.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--cream" id="sinalizacao">
+      <div class="container sign">
+        <div class="sign__copy">
+          <p class="eyebrow" data-reveal>07 <span>/</span> Sinalização</p>
+          <h2 class="section__title" data-reveal>Orientação que protege.</h2>
+          <p data-reveal>
+            As sinalizações foram realizadas na nascente e no afluente do Rio Carimã no Rio Una.
+            Elas orientam o caminho, educam sobre a preservação da água, da fauna e da flora,
+            conscientizam sobre o lixo e alertam para áreas de risco.
+          </p>
+          <div class="plates" data-stagger>
+            <div class="plate plate--green"><svg><use href="#i-pin" /></svg><span><small>Localização</small>Você chegou à nascente</span></div>
+            <div class="plate plate--blue"><svg><use href="#i-book" /></svg><span><small>Educativa</small>Preserve a água, a fauna e a flora</span></div>
+            <div class="plate plate--sand"><svg><use href="#i-recycle" /></svg><span><small>Conscientização</small>Leve seu lixo de volta</span></div>
+            <div class="plate plate--red"><svg><use href="#i-warning" /></svg><span><small>Atenção</small>Margens escorregadias e correnteza</span></div>
+          </div>
+        </div>
+        <div class="sign__media" data-reveal>
+          <figure class="photo"><img src="assets/img/sinalizacao-01.webp" alt="Placa de sinalização instalada na nascente do Rio Carimã" loading="lazy"></figure>
+          <figure class="photo photo--offset"><img src="assets/img/sinalizacao-02.webp" alt="Sinalização ambiental no afluente do Rio Carimã" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="registros">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" data-reveal>08 <span>/</span> Registros de campo</p>
+            <h2 class="section__title" data-reveal>O projeto em imagens.</h2>
+          </div>
+          <p class="section__intro" data-reveal>Nascente, vegetação, mudas, plantio e sinalização: cliques que documentam cada etapa do trabalho.</p>
+        </div>
+
+        <div class="gallery" data-stagger>
+          <figure class="gallery__item gallery__item--wide" data-caption="Trajetório estimado entre a nascente e o Rio Una"><button type="button" data-full="assets/img/trajeto.webp"><img src="assets/img/trajeto.webp" alt="Mapa do trajeto entre a nascente e o Rio Una" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Nascente do Rio Carimã"><button type="button" data-full="assets/img/nascente-01.webp"><img src="assets/img/nascente-01.webp" alt="Registro da nascente do Rio Carimã" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Curso d'água e margens"><button type="button" data-full="assets/img/nascente-02.webp"><img src="assets/img/nascente-02.webp" alt="Curso d'água do Rio Carimã" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Vegetação preservada"><button type="button" data-full="assets/img/vegetacao.webp"><img src="assets/img/vegetacao.webp" alt="Vegetação preservada no entorno do rio" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Estudantes em campo"><button type="button" data-full="assets/img/campo-01.webp"><img src="assets/img/campo-01.webp" alt="Estudantes em atividade de campo" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Leitura do território"><button type="button" data-full="assets/img/campo-02.webp"><img src="assets/img/campo-02.webp" alt="Registro de campo da equipe do projeto" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Erosão e assoreamento das margens"><button type="button" data-full="assets/img/erosao.webp"><img src="assets/img/erosao.webp" alt="Margens do rio com sinais de erosão e assoreamento" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Mudas recebidas na horta da escola"><button type="button" data-full="assets/img/mudas-01.webp"><img src="assets/img/mudas-01.webp" alt="Mudas recebidas na horta da escola" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Plantio em prática educativa"><button type="button" data-full="assets/img/plantio-02.webp"><img src="assets/img/plantio-02.webp" alt="Estudantes plantando mudas" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Cuidado com as mudas"><button type="button" data-full="assets/img/mudas-02.webp"><img src="assets/img/mudas-02.webp" alt="Mudas preparadas para o plantio" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Sinalização na nascente"><button type="button" data-full="assets/img/sinalizacao-01.webp"><img src="assets/img/sinalizacao-01.webp" alt="Placa de sinalização na nascente" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Estudantes na Bica do Bira"><button type="button" data-full="assets/img/campo-03.webp"><img src="assets/img/campo-03.webp" alt="Estudantes no afluente Bica do Bira" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Pertencimento e cuidado continuado"><button type="button" data-full="assets/img/plantio-03.webp"><img src="assets/img/plantio-03.webp" alt="Registro do plantio conduzido pelos estudantes" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Leitura orbital do trajeto"><button type="button" data-full="assets/img/mapa-orbital.webp"><img src="assets/img/mapa-orbital.webp" alt="Imagem orbital do percurso do Rio Carimã" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Mobilização da comunidade escolar"><button type="button" data-full="assets/img/comunidade.webp"><img src="assets/img/comunidade.webp" alt="Estudantes mobilizados em torno do projeto" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Mudas preparadas para o plantio"><button type="button" data-full="assets/img/mudas-03.webp"><img src="assets/img/mudas-03.webp" alt="Mudas preparadas para o reflorestamento" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Cuidado contínuo das mudas"><button type="button" data-full="assets/img/mudas-04.webp"><img src="assets/img/mudas-04.webp" alt="Cuidado contínuo das mudas pela equipe" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+          <figure class="gallery__item" data-caption="Novas mudas para a mata ciliar"><button type="button" data-full="assets/img/mudas-05.webp"><img src="assets/img/mudas-05.webp" alt="Mudas destinadas à recomposição da mata ciliar" loading="lazy"><span class="gallery__zoom">Ampliar</span></button></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section video-section" id="video">
+      <div class="container video__layout">
+        <div class="video__copy">
+          <p class="eyebrow eyebrow--light" data-reveal>09 <span>/</span> Filme do projeto</p>
+          <h2 class="section__title section__title--light" data-reveal>Veja de perto o que estamos cuidando.</h2>
+          <p data-reveal>Um registro em vídeo da nascente, dos percursos e das pessoas que tornam esse projeto possível.</p>
+          <a class="btn btn--primary" data-reveal href="assets/media/preservacao-rio-carima.pdf" target="_blank" rel="noopener">
+            Ver relatório completo <svg><use href="#i-external" /></svg>
+          </a>
+        </div>
+        <div class="video__frame" data-reveal>
+          <video controls preload="none" poster="assets/img/hero-rio.webp" aria-label="Vídeo do projeto Rio Carimã">
+            <source src="assets/media/video.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cta" id="contato">
+      <div class="container cta">
+        <p class="eyebrow eyebrow--light" data-reveal>10 <span>/</span> Participação</p>
+        <h2 class="cta__title" data-reveal>Cuidar da nascente é um compromisso <em>coletivo e contínuo.</em></h2>
+        <p data-reveal>
+          A proteção do Rio Carimã depende de manutenção, fiscalização e participação coletiva — hoje
+          e ao longo dos próximos anos. Dúvidas, parcerias ou interesse em participar: fale com a equipe
+          responsável pelo projeto.
+        </p>
+        <div class="cta__actions" data-reveal>
+          <a class="btn btn--primary" href="https://earth.google.com/earth/d/1Duwg5_9ckvEpJTSR4qpFQw50TKq8UZIL?usp=sharing" target="_blank" rel="noopener">
+            Explorar o trajeto <svg><use href="#i-external" /></svg>
+          </a>
+          <a class="btn btn--ghost" href="assets/media/preservacao-rio-carima.pdf" target="_blank" rel="noopener">Ler o relatório</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <span class="brand__mark"><svg><use href="#i-leaf" /></svg></span>
+        <div><strong>Desenvolvimento Sustentável: Mapeamento e Reflorestamento da Nascente do Rio Carimã</strong><p>Colégio de São José · Barreiros — Pernambuco</p></div>
+      </div>
+      <div class="footer__info">
+        <p><strong>Colégio de São José</strong> · 3º série do Ensino Médio · 2026</p>
+        <p><strong>Estudantes:</strong> Maria Luísa Braz, Maria Luiza Bandeira, Karen Wesleya, Guilherme Albuquerque, Mariah Lorena e Lara Buarque</p>
+      </div>
+    </div>
+    <div class="container footer__refs">
+      <strong>Fontes utilizadas</strong>
+      <p>Revista Educação Ambiental · SNIRH / ANA–Compesa (2020) · Anais do II SPRH (2024) · APAC</p>
+      <p class="footer__copy">Projeto apresentado em 18 de novembro de 2026 · Barreiros — Pernambuco</p>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Voltar ao topo"><svg><use href="#i-arrow-up" /></svg></button>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Galeria de imagens">
+    <div class="lightbox__backdrop" data-close></div>
+    <button class="lightbox__close" type="button" aria-label="Fechar galeria" data-close><svg><use href="#i-close" /></svg></button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Imagem anterior"><svg><use href="#i-chevron-left" /></svg></button>
+    <figure class="lightbox__figure">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">
+      <figcaption></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Próxima imagem"><svg><use href="#i-chevron-right" /></svg></button>
   </div>
-</header>
 
-<main>
-
-  <div class="intro">
-    Este projeto tem como objetivo principal planejar a implementação de um sistema de sinalização sustentável para orientar, organizar e conscientizar a população sobre o acesso e a preservação do rio da cidade. Nesta primeira etapa, será apresentado apenas o planejamento do que será realizado futuramente, destacando a importância da sinalização tanto para o meio ambiente quanto para a segurança das pessoas.
-  </div>
-
-  <section>
-    <h2>O Problema</h2>
-    <p>Um dos pontos mais importantes do projeto é garantir que as pessoas saibam como chegar ao rio de forma correta e segura. Muitas vezes, a falta de orientação faz com que visitantes utilizem caminhos inadequados, pisem em áreas de vegetação sensível ou até se percam. Isso pode causar impactos ambientais, como destruição da natureza local, além de riscos à segurança.</p>
-  </section>
-
-  <section>
-    <h2>Rota Planejada até o Rio</h2>
-    <p>O projeto propõe a criação de uma rota planejada, definida com base em caminhos já existentes, evitando desmatamento ou alteração do ambiente natural. A rota será acessível, segura e fácil de seguir.</p>
-    <div class="rota">
-      <div class="rota-step"><div class="rota-num">1</div><div class="rota-txt">Ponto de partida (rua principal)</div></div>
-      <div class="rota-step"><div class="rota-num">2</div><div class="rota-txt">Pontos de referência da cidade</div></div>
-      <div class="rota-step"><div class="rota-num">3</div><div class="rota-txt">Placas de direção e distância</div></div>
-      <div class="rota-step"><div class="rota-num">4</div><div class="rota-txt">Chegada ao rio</div></div>
-    </div>
-    <div class="card-grid" style="margin-top:24px;">
-      <div class="card"><div class="icon">🧭</div><h3>Direção</h3><p>Setas indicando o caminho correto ao longo do percurso.</p></div>
-      <div class="card"><div class="icon">📏</div><h3>Distância</h3><p>Informação sobre a distância restante até o rio.</p></div>
-      <div class="card"><div class="icon">⏱️</div><h3>Tempo</h3><p>Tempo médio estimado de percurso a pé.</p></div>
-      <div class="card"><div class="icon">⚠️</div><h3>Atenção</h3><p>Pontos de atenção ao longo do caminho.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Sinalização no Local do Rio</h2>
-    <p>No próprio ambiente do rio, serão colocadas placas informativas e educativas com diferentes funções — orientar, conscientizar e alertar.</p>
-    <div class="placas-grid">
-      <div class="placa orientar"><span class="placa-icon">📍</span><span class="placa-label">Localização</span>Indicando que o visitante chegou ao rio</div>
-      <div class="placa educar"><span class="placa-icon">📚</span><span class="placa-label">Educativas</span>Importância da preservação da água, fauna e flora</div>
-      <div class="placa conscient"><span class="placa-icon">♻️</span><span class="placa-label">Conscientização</span>"Não jogue lixo", "preserve este espaço", "leve seu lixo de volta"</div>
-      <div class="placa perigo"><span class="placa-icon">🚨</span><span class="placa-label">Perigo</span>Áreas escorregadias, profundidade, correnteza e riscos de acidentes</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Materiais Sustentáveis</h2>
-    <p>A proposta é que as placas sejam feitas com materiais reutilizados ou recicláveis. Também será sugerido o uso de tintas ecológicas, que causam menos impacto ao meio ambiente.</p>
-    <div class="materiais">
-      <span class="material-tag">🪵 Madeira reaproveitada</span>
-      <span class="material-tag">🧱 Restos de construção</span>
-      <span class="material-tag">🍶 Garrafas plásticas</span>
-      <span class="material-tag">🪧 Placas antigas reformadas</span>
-      <span class="material-tag">🎨 Tintas ecológicas</span>
-    </div>
-  </section>
-
-  <section>
-    <h2>Panfleto Informativo</h2>
-    <p>Na etapa final, o grupo ficará responsável pela criação de um panfleto de divulgação que explique de forma clara e atrativa tudo o que foi planejado.</p>
-    <ul class="panfleto-list">
-      <li>Objetivo do projeto</li>
-      <li>Importância da sinalização</li>
-      <li>Benefícios para o meio ambiente</li>
-      <li>Benefícios para a população</li>
-      <li>Exemplos das placas utilizadas</li>
-      <li>Como participar</li>
-    </ul>
-  </section>
-
-  <div class="video_div">
-    <video controls src="assets/video.mp4"></video>
-  </div>
-
-  <section>
-    <h2>Divulgação nas Redes Sociais</h2>
-    <p>Para ampliar o alcance do projeto, será proposta a utilização das redes sociais como ferramenta de conscientização, atingindo principalmente os jovens.</p>
-    <div class="divulgacao-list">
-      <div class="div-item"><div class="di">🌿</div><a href="https://mundoeducacao.uol.com.br/biologia/10-dicas-importantes-para-preservar-meio-ambiente.htm" target="_blank">Dicas de preservação ambiental</a></div>
-      <div class="div-item"><div class="di">🏞️</div><a href="https://www.revistaea.org/artigo.php?idartigo=560" target="_blank">Informações sobre o rio</a></div>
-      <div class="div-item"><div class="di">🚯</div><a href="https://www.google.com/search?q=alertas+sobre+poluição+de+rios" target="_blank">Alertas sobre poluição</a></div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <strong>Colégio de São José</strong> &nbsp;·&nbsp; Projeto rio carimã &nbsp;·&nbsp; 3º E.M. &nbsp;·&nbsp;  2026
-</footer>
-
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
